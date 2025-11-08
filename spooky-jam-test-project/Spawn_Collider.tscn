@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://l03qhxytsuyb"]
+
+[ext_resource type="Script" uid="uid://bjjik6gvmaos" path="res://spawn_collider.gd" id="1_oubol"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_oubol"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wusp"]
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_oubol")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(10, 10)
+scale = Vector2(20, 20)
+texture = SubResource("CanvasTexture_oubol")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 10)
+shape = SubResource("RectangleShape2D_7wusp")
+debug_color = Color(0.23691854, 0.47690398, 1, 0.42352942)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
