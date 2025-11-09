@@ -11,10 +11,14 @@ config_version=5
 [application]
 
 config/name="Spooky_Jam_Test_Project"
-run/main_scene="uid://balnt55l3mhd0"
+run/main_scene="uid://46nrpn12i5wh"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 global="*res://global.gd"
+
+[dotnet]
+
+project/assembly_name="Spooky_Jam_Test_Project"
