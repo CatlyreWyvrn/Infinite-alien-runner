@@ -1,30 +1,26 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0k2r7enywafa"]
 
 [ext_resource type="Script" uid="uid://dmgp1vjad0045" path="res://player.gd" id="1_4flbx"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sh265"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_4flbx"]
-diffuse_texture = SubResource("PlaceholderTexture2D_sh265")
+[ext_resource type="Texture2D" uid="uid://c3g4ra447l8bt" path="res://graphics/spookyjam_astro.png" id="2_i3pqv"]
+[ext_resource type="Script" uid="uid://b0elm68vj2xou" path="res://camera_2d.gd" id="2_onrkg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
-size = Vector2(10, 10)
+size = Vector2(2.9333334, 8.400001)
 
-[node name="Player" type="Area2D"]
+[node name="Player" type="CharacterBody2D"]
 scale = Vector2(15, 15)
 script = ExtResource("1_4flbx")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.842171e-14, 5.9604645e-08)
-scale = Vector2(10, 10)
-texture = SubResource("CanvasTexture_4flbx")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.7683716e-07, 4.7683716e-07)
+position = Vector2(-0.13333336, 0.4000002)
 shape = SubResource("RectangleShape2D_onrkg")
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("2_onrkg")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.842171e-14, 5.9604645e-08)
+scale = Vector2(0.10000001, 0.10000001)
+texture = ExtResource("2_i3pqv")

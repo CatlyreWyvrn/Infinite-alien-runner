@@ -1,18 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbxpk6gq41hpv"]
+[gd_scene load_steps=10 format=3 uid="uid://cbxpk6gq41hpv"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_qcbvg"]
+[ext_resource type="Script" uid="uid://q416sfplufsw" path="res://obstacle.gd" id="1_sl1jc"]
+[ext_resource type="Texture2D" uid="uid://bd41s7jmmd08x" path="res://graphics/comet-Sheet.png" id="2_aubd6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl1jc"]
-size = Vector2(80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcivv"]
+atlas = ExtResource("2_aubd6")
+region = Rect2(0, 0, 128, 64)
 
-[node name="RigidBody2D" type="RigidBody2D" groups=["obstacle"]]
-gravity_scale = 0.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_tyhon"]
+atlas = ExtResource("2_aubd6")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvdov"]
+atlas = ExtResource("2_aubd6")
+region = Rect2(256, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2epm"]
+atlas = ExtResource("2_aubd6")
+region = Rect2(384, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snuee"]
+atlas = ExtResource("2_aubd6")
+region = Rect2(512, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6pt3h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcivv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tyhon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvdov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2epm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snuee")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aubd6"]
+radius = 40.0
+
+[node name="obstacle" type="Area2D" groups=["obstacle"]]
+script = ExtResource("1_sl1jc")
 metadata/OxygenLost = 50
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.827451, 0, 0, 1)
-scale = Vector2(80, 80)
-texture = SubResource("CanvasTexture_qcbvg")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, -4)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_6pt3h")
+frame_progress = 0.13995129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_sl1jc")
+position = Vector2(4, 0)
+shape = SubResource("CircleShape2D_aubd6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
