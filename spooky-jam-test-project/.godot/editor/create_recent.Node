@@ -1,9 +1,11 @@
+Label
+Panel
+VBoxContainer
+Button
 Timer
 CollisionShape2D
 Sprite2D
 RigidBody2D
-Label
-Button
 CanvasLayer
 VisibleOnScreenNotifier2D
 Area2D
