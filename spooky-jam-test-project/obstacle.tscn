@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbxpk6gq41hpv"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_qcbvg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl1jc"]
+size = Vector2(80, 80)
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["obstacle"]]
+gravity_scale = 0.0
+metadata/OxygenLost = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.827451, 0, 0, 1)
+scale = Vector2(80, 80)
+texture = SubResource("CanvasTexture_qcbvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sl1jc")

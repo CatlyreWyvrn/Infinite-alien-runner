@@ -9,3 +9,5 @@ res://canvas_layer.tscn
 res://canvas_layer.gd
 res://Spawn_Collider.tscn
 res://floorTile.tscn
+res://oxygenTank.tscn
+res://obstacle.tscn

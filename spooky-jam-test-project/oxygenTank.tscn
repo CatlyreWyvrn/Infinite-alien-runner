@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhvajnu1nk0pg"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ljfet"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2pp68"]
+size = Vector2(60, 60)
+
+[node name="RigidBody2D" type="RigidBody2D" groups=["Collectable"]]
+gravity_scale = 0.0
+metadata/OxygenGiven = 50
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0.8901961, 0, 1)
+scale = Vector2(60, 60)
+texture = SubResource("CanvasTexture_ljfet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2pp68")

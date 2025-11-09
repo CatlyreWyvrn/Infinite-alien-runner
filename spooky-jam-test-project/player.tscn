@@ -11,9 +11,9 @@ diffuse_texture = SubResource("PlaceholderTexture2D_sh265")
 size = Vector2(10, 10)
 
 [node name="Player" type="Area2D"]
+scale = Vector2(15, 15)
 script = ExtResource("1_4flbx")
 metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.842171e-14, 5.9604645e-08)
@@ -23,7 +23,8 @@ texture = SubResource("CanvasTexture_4flbx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.7683716e-07, 4.7683716e-07)
 shape = SubResource("RectangleShape2D_onrkg")
-disabled = true
 debug_color = Color(0, 0.6, 0.69803923, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
