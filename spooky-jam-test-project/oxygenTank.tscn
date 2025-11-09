@@ -1,18 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhvajnu1nk0pg"]
+[gd_scene load_steps=4 format=3 uid="uid://bhvajnu1nk0pg"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_ljfet"]
+[ext_resource type="Script" uid="uid://dtvkuchru1r0g" path="res://oxygen_tank.gd" id="1_2pp68"]
+[ext_resource type="Texture2D" uid="uid://brhs4k4nwngja" path="res://graphics/oxygentank.png" id="2_ab318"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2pp68"]
-size = Vector2(60, 60)
+size = Vector2(34, 88)
 
-[node name="RigidBody2D" type="RigidBody2D" groups=["Collectable"]]
-gravity_scale = 0.0
+[node name="oxygenTank" type="Area2D" groups=["Collectable"]]
+script = ExtResource("1_2pp68")
 metadata/OxygenGiven = 50
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_2pp68")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0.8901961, 0, 1)
-scale = Vector2(60, 60)
-texture = SubResource("CanvasTexture_ljfet")
+position = Vector2(0, 2.9999998)
+texture = ExtResource("2_ab318")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_2pp68")
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

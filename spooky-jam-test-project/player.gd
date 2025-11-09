@@ -1,6 +1,10 @@
-extends Area2D
+extends CharacterBody2D
 
 signal itemCollide
+
+@export var floor = 200
+@export var roof = -250
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -8,12 +12,28 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if !global.gameOver:
-		position.x += (global.speed * delta)
-
-func _on_body_entered(body: Node2D) -> void:
-	body.set_deferred("CollisionShape2D", false)
-	if body.get_groups().has("Collectable"):
-		global.oxygen = min(global.oxygen + body.get_meta("OxygenGiven"), 100)
-	if body.get_groups().has("obstacle"):
-		global.oxygen = max(global.oxygen - body.get_meta("OxygenLost"), 0)
-	body.queue_free()
+		position.x += delta * global.speed
+		
+		if Input.is_action_pressed("up"):
+			velocity.y -= 30
+			
+		if Input.is_action_pressed("down"):
+			velocity.y += 15
+			
+		velocity.y += 9.8
+			
+		if velocity.x > 500:
+			velocity.x = 500
+		if velocity.y < -500:
+			velocity.y = -500
+			
+		move_and_slide()
+		
+		if position.y > floor:
+			position.y = floor
+			velocity.y = 0
+		
+		if position.y < roof:
+			position.y = roof
+			velocity.y = 0
+		

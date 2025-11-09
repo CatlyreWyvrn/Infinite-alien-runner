@@ -5,14 +5,24 @@ extends Node
 @export var oxygenTank_scene : PackedScene
 @onready var timer : Timer = $ScoreTimer
 @onready var oxyTimer : Timer = $OxygenTimer
+var lastY = 1
+var obstacleTime = 2.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$ObstacleTimer.wait_time = randf_range(2.0, 3.8)
+	$ObstacleTimer.wait_time = randf_range(obstacleTime, obstacleTime + 2)
 	$OxygenTankSpawnTimer.wait_time = randf_range(11.0, 20.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	
+	global.speed = 150 + (global.score * 2)
+	
+	if global.score > 200:
+		$ObstacleTimer.wait_time = randf_range(0.5, 1)
+	else:
+		$ObstacleTimer.wait_time = randf_range(obstacleTime - (global.score/100), obstacleTime + 2 - (global.score/50))
+	
 	if global.gameOver:
 		$ScoreTimer.stop()
 		$OxygenTimer.stop()
@@ -49,13 +59,17 @@ func _on_hud_reset_scene() -> void:
 
 func _on_obstacle_timer_timeout() -> void:
 	var obstacleIns = obstacle_scene.instantiate()
-	obstacleIns.position = Vector2($TileSpawnCollider.global_position.x, randf_range(100, $TileSpawnCollider.global_position.y))
+	if lastY < 0:
+		obstacleIns.position = Vector2($TileSpawnCollider.global_position.x, randf_range(1, 250))
+	if lastY > 0:
+		obstacleIns.position = Vector2($TileSpawnCollider.global_position.x, randf_range(-250, -1))
+	lastY = obstacleIns.position.y
 	$ObstacleTimer.wait_time = randf_range(2.0, 3.8)
 	add_child(obstacleIns)
 
 
 func _on_oxygen_tank_spawn_timer_timeout() -> void:
 	var oxygenTankInc = oxygenTank_scene.instantiate()
-	oxygenTankInc.position = Vector2($TileSpawnCollider.global_position.x, randf_range(80, $TileSpawnCollider.global_position.y - 20.0))
+	oxygenTankInc.position = Vector2($TileSpawnCollider.global_position.x, randf_range(-250, 250))
 	$OxygenTankSpawnTimer.wait_time = randf_range(11.0, 20.0)
 	add_child(oxygenTankInc)
