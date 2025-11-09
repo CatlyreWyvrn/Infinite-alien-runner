@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://46nrpn12i5wh"]
+[gd_scene load_steps=17 format=3 uid="uid://46nrpn12i5wh"]
 
 [ext_resource type="Texture2D" uid="uid://ce2avdscpnviy" path="res://Main Menu/UnlitStart.png" id="1_3hlnc"]
-[ext_resource type="Texture2D" uid="uid://fh7ll4oijh1c" path="res://Main Menu/Sprite-0004.png" id="1_lo3e1"]
+[ext_resource type="Texture2D" uid="uid://cin5ypfdfb0gy" path="res://Main Menu/3x4_Version_Galaxy.png" id="1_ttfip"]
 [ext_resource type="Texture2D" uid="uid://cnnq0wru12id1" path="res://Main Menu/Sprite-0002.png" id="2_ttfip"]
 [ext_resource type="FontFile" uid="uid://cfvofkged52pm" path="res://Main Menu/Jersey10-Regular.ttf" id="3_f8ei6"]
 [ext_resource type="Texture2D" uid="uid://teet3up3w0o6" path="res://Main Menu/LitStart.png" id="3_o4crl"]
@@ -9,11 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cj24aotjcbleb" path="res://Main Menu/UnlitExit.png" id="4_n4v7v"]
 [ext_resource type="Texture2D" uid="uid://doduvqbkw4d2x" path="res://Main Menu/LitExit.png" id="5_o4crl"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l33hh"]
-bg_color = Color(0.033853274, 0.03385329, 0.033853233, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_03k0w"]
-texture = ExtResource("1_lo3e1")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_anie1"]
+texture = ExtResource("1_ttfip")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3qfjy"]
 content_margin_top = 1.0
@@ -64,40 +61,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_l33hh")
+theme_override_styles/panel = SubResource("StyleBoxTexture_anie1")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5616958, 0.99639815)
-pivot_offset = Vector2(578.605, 290.47046)
-theme_override_styles/panel = SubResource("StyleBoxTexture_03k0w")
-
-[node name="Panel3" type="Panel" parent="Panel"]
-custom_minimum_size = Vector2(0, 133.71)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(1.0011858, 1)
-pivot_offset = Vector2(1403.5979, 145.03479)
-theme_override_styles/panel = SubResource("StyleBoxTexture_3qfjy")
-
-[node name="Label" type="Label" parent="Panel"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = -5.650772
-offset_bottom = 260.06403
+offset_right = 327.49768
+offset_bottom = 275.98706
 grow_horizontal = 2
-scale = Vector2(1, 0.6827627)
+scale = Vector2(0.7731188, 0.7222742)
 pivot_offset = Vector2(40.428802, 11.377539)
 theme_override_colors/font_color = Color(1, 1, 0.7607843, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -106,6 +79,40 @@ theme_override_font_sizes/font_size = 160
 text = "AstroDash"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Panel3" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 133.71)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -403.0001
+offset_top = -154.10202
+offset_right = -403.00012
+offset_bottom = -20.391968
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(-0.73444134, 1.6716992)
+pivot_offset = Vector2(595.93835, 109.86244)
+theme_override_styles/panel = SubResource("StyleBoxTexture_3qfjy")
+
+[node name="Panel4" type="Panel" parent="Panel3"]
+custom_minimum_size = Vector2(0, 133.71)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1110.2041
+offset_top = -131.52002
+offset_right = -1110.2041
+offset_bottom = 2.189972
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.9320086, 1.0696081)
+pivot_offset = Vector2(595.93835, 109.86244)
+theme_override_styles/panel = SubResource("StyleBoxTexture_3qfjy")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
