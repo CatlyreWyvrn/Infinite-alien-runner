@@ -11,12 +11,14 @@
 [node name="Main" type="Node"]
 script = ExtResource("1_1bvp3")
 floorTile_scene = ExtResource("2_0xm2m")
+obstacle_scene = ExtResource("7_272bh")
+oxygenTank_scene = ExtResource("6_7mycd")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(76, 76)
 
 [node name="TileSpawnCollider" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(669, 159)
+position = Vector2(669, 175)
 scale = Vector2(1.7199988, 5.280001)
 
 [node name="Tile1" parent="." instance=ExtResource("2_0xm2m")]
@@ -46,7 +48,16 @@ position = Vector2(595, 91)
 [node name="RigidBody2D2" parent="." instance=ExtResource("7_272bh")]
 position = Vector2(341, 84)
 
+[node name="ObstacleTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="OxygenTankSpawnTimer" type="Timer" parent="."]
+wait_time = 11.0
+autostart = true
+
 [connection signal="collide" from="TileSpawnCollider" to="." method="_on_area_2d_2_collide"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_timer_timeout"]
 [connection signal="resetScene" from="HUD" to="." method="_on_hud_reset_scene"]
 [connection signal="timeout" from="OxygenTimer" to="." method="_on_oxygen_timer_timeout"]
+[connection signal="timeout" from="ObstacleTimer" to="." method="_on_obstacle_timer_timeout"]
+[connection signal="timeout" from="OxygenTankSpawnTimer" to="." method="_on_oxygen_tank_spawn_timer_timeout"]

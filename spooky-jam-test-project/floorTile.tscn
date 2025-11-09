@@ -9,6 +9,7 @@ size = Vector2(1, 1)
 
 [node name="RigidBody2D" type="RigidBody2D"]
 gravity_scale = 0.0
+freeze = true
 script = ExtResource("1_gi63c")
 metadata/_edit_group_ = true
 

@@ -1,12 +1,15 @@
 extends Node
 
 @export var floorTile_scene: PackedScene
+@export var obstacle_scene : PackedScene
+@export var oxygenTank_scene : PackedScene
 @onready var timer : Timer = $ScoreTimer
 @onready var oxyTimer : Timer = $OxygenTimer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$ObstacleTimer.wait_time = randf_range(2.0, 3.8)
+	$OxygenTankSpawnTimer.wait_time = randf_range(11.0, 20.0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -42,3 +45,17 @@ func _on_hud_reset_scene() -> void:
 	get_tree().reload_current_scene()
 	global._ready()
 	global.gameOver = false
+
+
+func _on_obstacle_timer_timeout() -> void:
+	var obstacleIns = obstacle_scene.instantiate()
+	obstacleIns.position = Vector2($TileSpawnCollider.global_position.x, randf_range(100, $TileSpawnCollider.global_position.y))
+	$ObstacleTimer.wait_time = randf_range(2.0, 3.8)
+	add_child(obstacleIns)
+
+
+func _on_oxygen_tank_spawn_timer_timeout() -> void:
+	var oxygenTankInc = oxygenTank_scene.instantiate()
+	oxygenTankInc.position = Vector2($TileSpawnCollider.global_position.x, randf_range(80, $TileSpawnCollider.global_position.y - 20.0))
+	$OxygenTankSpawnTimer.wait_time = randf_range(11.0, 20.0)
+	add_child(oxygenTankInc)
