@@ -1,5 +1,9 @@
-VisibleOnScreenNotifier2D
 Sprite2D
+Label
+Button
+Timer
+CanvasLayer
+VisibleOnScreenNotifier2D
 CollisionShape2D
 RigidBody2D
 Area2D

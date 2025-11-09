@@ -1,1 +1,11 @@
 res://main.tscn
+res://global.gd
+res://player.tscn
+res://player.gd
+res://spawn_collider.gd
+res://main.gd
+res://floor_tile.gd
+res://canvas_layer.tscn
+res://canvas_layer.gd
+res://Spawn_Collider.tscn
+res://floorTile.tscn

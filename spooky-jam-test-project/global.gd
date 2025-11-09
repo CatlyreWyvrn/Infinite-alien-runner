@@ -1,15 +1,17 @@
-extends RigidBody2D
+extends Node
 
+@export var speed = 150
+@export var topSpeed = 400
+@export var score : int
+@export var oxygen = 100
+var gameOver : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	score = 0
+	speed = 150
+	oxygen = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	#Deletes self when off screen
-	self.queue_free()

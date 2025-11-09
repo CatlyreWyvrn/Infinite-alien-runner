@@ -9,8 +9,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position.x += delta * 150
-	
+	if !global.gameOver:
+		position.x += delta * global.speed
 
 func _on_body_exited(body: Node2D) -> void:
 	collide.emit(body)

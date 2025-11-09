@@ -14,3 +14,7 @@ config/name="Spooky_Jam_Test_Project"
 run/main_scene="uid://balnt55l3mhd0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+global="*res://global.gd"

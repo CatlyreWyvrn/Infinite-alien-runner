@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://balnt55l3mhd0"]
+[gd_scene load_steps=6 format=3 uid="uid://balnt55l3mhd0"]
 
 [ext_resource type="Script" uid="uid://bu6tuxvp3d13d" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b0k2r7enywafa" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://wxnni0a8mwya" path="res://floorTile.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://l03qhxytsuyb" path="res://Spawn_Collider.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bvmymh5twd5rw" path="res://canvas_layer.tscn" id="5_lquwl"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_1bvp3")
@@ -12,22 +13,33 @@ floorTile_scene = ExtResource("2_0xm2m")
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(76, 76)
 scale = Vector2(15, 15)
-speed = 150
 
-[node name="Area2D2" parent="." instance=ExtResource("3_h2yge")]
+[node name="TileSpawnCollider" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(669, 159)
 scale = Vector2(1.7199988, 5.280001)
 
-[node name="RigidBody2D" parent="." instance=ExtResource("2_0xm2m")]
+[node name="Tile1" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(-309, 303)
 
-[node name="RigidBody2D2" parent="." instance=ExtResource("2_0xm2m")]
+[node name="Tile2" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(75, 245)
 
-[node name="RigidBody2D3" parent="." instance=ExtResource("2_0xm2m")]
+[node name="Tile3" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(459, 207)
 
-[node name="RigidBody2D4" parent="." instance=ExtResource("2_0xm2m")]
+[node name="Tile4" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(843, 207)
 
-[connection signal="collide" from="Area2D2" to="." method="_on_area_2d_2_collide"]
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="HUD" parent="." instance=ExtResource("5_lquwl")]
+
+[node name="OxygenTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="collide" from="TileSpawnCollider" to="." method="_on_area_2d_2_collide"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_timer_timeout"]
+[connection signal="resetScene" from="HUD" to="." method="_on_hud_reset_scene"]
+[connection signal="timeout" from="OxygenTimer" to="." method="_on_oxygen_timer_timeout"]
